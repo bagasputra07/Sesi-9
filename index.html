@@ -322,28 +322,10 @@
                 <li>Method chaining untuk <strong>fluent API</strong></li>
                 <li>Contoh: <code>Pizza.builder().size('large').addTopping('cheese').build()</code></li>
             </ul>
-            <pre><code>// Utility class yang kurang natural
-class StringUtils {
-  static String capitalize(String text) {
-    if (text.isEmpty) return text;
-    return text[0].toUpperCase() + text.substring(1);
-  }
-  
-  static bool isEmail(String text) {
-    return text.contains('@');
-  }
-}
-
-void main(){
-// Penggunaan kurang natural
-var name = 'john';
-var capitalized = StringUtils.capitalize(name); // 'John'
-var isEmail = StringUtils.isEmail('test@mail.com');
-  
-// Cetak variabel name, capitalized, dan isEmail
-print('Original name: $name');
-print('Capitalized name: $capitalized');
-print('Is "test@mail.com" an email? $isEmail');
+            <pre><code>class ConfigBuilder {
+ConfigBuilder host(String h) { return this; }
+ConfigBuilder port(int p) { return this; }
+Config build() { return Config(); }
 }</code></pre>
         </div>
     </div>
