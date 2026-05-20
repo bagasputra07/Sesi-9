@@ -352,25 +352,6 @@ print(name.isNullOrEmpty);       // true
 print(name.isNotNullOrEmpty);    // false
 print(name.withDefault('Guest')); // 'Guest'
 }
-<!-- Slide 6: Solusi dengan Extension Methods -->
-    <div class="slide-card">
-        <div class="slide-header"><h2>✨ Slide 6: Tipe Yang Bisa Di-extend</h2></div>
-        <div class="slide-body">
-            <div class="code-block">
-            </div>
-        </div>
-    </div>
-// Extension untuk List<int>
-extension IntListExtensions on List<int> {
-int get sum => fold(0, (total, item) => total + item);
-double get average => isEmpty ? 0 : sum / length;
-}
-void main(){
-var numbers = [1, 2, 3, 4, 5];
-print(numbers.sum); // 15
-print(numbers.average); // 3.0
-}
-
     <!-- Slide 7: Null safety extension -->
     <div class="slide-card">
         <div class="slide-header"><h2>🛡️ Slide 7: Extension untuk Null Safety</h2></div>
