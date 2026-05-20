@@ -321,7 +321,7 @@ print(numbers.average);  // 3.0
         </div>
     </div>
 
-    <!-- Slide 5 & 6 digabung: tipe apa saja + contoh numeric (built-in) -->
+    <!-- Slide 5 Sintaks Extention Methods (built-in) -->
     <div class="slide-card">
         <div class="slide-header"><h2>🎯 Slide 5-6: Tipe yang Bisa Diperluas & Contoh List<int></h2></div>
         <div class="slide-body">
@@ -333,20 +333,43 @@ print(numbers.average);  // 3.0
                 <li>4. Nullable types: <span class="code-inline">String?, int?</span></li>
             </ul>
             <div class="code-block">
-// Extension untuk List<int>
-extension IntListExtensions on List<int> {
-  int get sum => fold(0, (total, item) => total + item);
-  double get average => isEmpty ? 0 : sum / length;
+extension NullableStringExtensions on String? {
+  // Safe access untuk nullable string
+  String orEmpty() => this ?? '';
+  
+  bool get isNullOrEmpty => this == null || this!.isEmpty;
+  
+  bool get isNotNullOrEmpty => !isNullOrEmpty;
+  
+  String withDefault(String defaultValue) => this ?? defaultValue;
 }
 
-void main() {
-  var numbers = [1, 2, 3, 4, 5];
-  print(numbers.sum);      // 15
-  print(numbers.average);  // 3.0
+void main(){
+// Penggunaan
+String? name;
+print(name.orEmpty());           // ''
+print(name.isNullOrEmpty);       // true
+print(name.isNotNullOrEmpty);    // false
+print(name.withDefault('Guest')); // 'Guest'
 }
+<!-- Slide 6: Solusi dengan Extension Methods -->
+    <div class="slide-card">
+        <div class="slide-header"><h2>✨ Slide 6: Tipe Yang Bisa Di-extend</h2></div>
+        <div class="slide-body">
+            <div class="code-block">
             </div>
         </div>
     </div>
+// Extension untuk List<int>
+extension IntListExtensions on List<int> {
+int get sum => fold(0, (total, item) => total + item);
+double get average => isEmpty ? 0 : sum / length;
+}
+void main(){
+var numbers = [1, 2, 3, 4, 5];
+print(numbers.sum); // 15
+print(numbers.average); // 3.0
+}
 
     <!-- Slide 7: Null safety extension -->
     <div class="slide-card">
