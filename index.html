@@ -322,10 +322,11 @@
                 <li>Method chaining untuk <strong>fluent API</strong></li>
                 <li>Contoh: <code>Pizza.builder().size('large').addTopping('cheese').build()</code></li>
             </ul>
-            <pre><code>class ConfigBuilder {
-  ConfigBuilder host(String h) { return this; }
-  ConfigBuilder port(int p) { return this; }
-  Config build() { return Config(); }
+            <pre><code>void main() {
+  var config = ConfigBuilder()
+      .host('localhost')
+      .port(8080)
+      .build();
 }</code></pre>
         </div>
     </div>
