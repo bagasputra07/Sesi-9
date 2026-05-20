@@ -633,29 +633,64 @@ void main() {
         </div>
     </div>
 
-    <!-- SLIDE 13: (Sebagai Ringkasan awal + poin utama) sesuai konten asli halaman 13/14 -->
-    <div class="slide-card">
+    <!-- SLIDE 13: Praktik 2 - Validator Extensions -->
+   <div class="slide-card">
         <div class="slide-header">
-            <div class="slide-num">📌 Slide 13</div>
-            <div class="slide-title">Ringkasan Fitur Extension Methods</div>
+            <div class="slide-num">🏷️ Slide 13</div>
+            <div class="slide-title">Extension untuk Custom Classes</div>
         </div>
         <div class="slide-body">
-            <div class="grid-2">
-                <div class="infocard">
-                    <h3>🎯 4 Hal Penting</h3>
-                    <ul>
-                        <li>1. Tambah method ke tipe yang ada</li>
-                        <li>2. Sintaks: <code>extension Name on Type</code></li>
-                        <li>3. Support: method, getter, setter, operator</li>
-                        <li>4. Generic extensions: <code>on List&lt;T&gt;</code></li>
-                    </ul>
-                </div>
-                <div class="infocard">
-                    <h3>🧪 Contoh cepat</h3>
-                    <pre style="background:#200905; margin:0;"><code>extension on String {
-  String get shout => toUpperCase() + '!';
+            <pre><code>// Validator extensions untuk berbagai tipe
+extension StringValidators on String {
+  bool get isEmail {
+    return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(this);
+  }
+
+  bool get isPhoneNumber {
+    return RegExp(r'^[0-9]{10,13}$').hasMatch(this);
+  }
+
+  bool get isStrongPassword {
+    return length >= 8 &&
+        contains(RegExp(r'[A-Z]')) &&
+        contains(RegExp(r'[a-z]')) &&
+        contains(RegExp(r'[0-9]'));
+  }
+
+  bool get isUrl {
+    try {
+      Uri.parse(this);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
 }
-print('hello'.shout); // HELLO!</code></pre>
+
+extension IntValidators on int {
+  bool get isAdultAge => this >= 18;
+  bool get isPositive => this > 0;
+  bool get isEven => this % 2 == 0;
+  bool get isOdd => this % 2 != 0;
+}
+
+void main() {
+  // Penggunaan
+  var email = 'test@example.com';
+  var age = 25;
+  var password = 'Pass1234';
+  var phone = '08123456789';
+  var url = 'https://dart.dev';
+
+  print(email.isEmail);                 // true
+  print(age.isAdultAge);                // true
+  print(password.isStrongPassword);     // true
+  print(10.isEven);                     // true
+  print(phone.isPhoneNumber);           // true
+  print(url.isUrl);                     // true
+  print(5.isOdd);                       // true
+  print((-3).isPositive);               // false
+}</code></pre>
                 </div>
             </div>
         </div>
