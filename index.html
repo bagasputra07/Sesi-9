@@ -1,9 +1,12 @@
+Berikut adalah kode HTML yang berisi konten dari file "TUGAS PAK AFRI.pdf" yang telah diubah menjadi halaman web yang rapi dan informatif.
+
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide 9: Extension Methods - Dart Programming</title>
+    <title>Dart Extension Methods - Materi Sesi 9</title>
     <style>
         * {
             margin: 0;
@@ -12,264 +15,275 @@
         }
 
         body {
-            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
-            background: #f0f2f5;
-            padding: 40px 20px;
-            line-height: 1.5;
-            color: #1e293b;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+            padding: 20px;
         }
 
-        .slide-container {
-            max-width: 1100px;
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
-
-        .slide-card {
             background: white;
-            border-radius: 28px;
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             overflow: hidden;
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        .slide-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 25px 40px -14px rgba(0, 0, 0, 0.15);
-        }
-
-        .slide-header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
-            padding: 20px 28px;
-            border-bottom: 3px solid #3b82f6;
+            padding: 30px 40px;
+            text-align: center;
         }
 
-        .slide-header h2 {
-            font-size: 1.6rem;
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .header .duration {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 50px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        /* Slide container */
+        .slide {
+            padding: 40px 50px;
+            border-bottom: 1px solid #e0e7ef;
+            transition: background 0.3s;
+        }
+
+        .slide:hover {
+            background: #f8fafd;
+        }
+
+        .slide-number {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .slide-title {
+            font-size: 1.8rem;
             font-weight: 600;
-            letter-spacing: -0.3px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            margin-bottom: 20px;
+            color: #1e3c72;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
         }
 
-        .slide-header h2 small {
-            font-size: 0.85rem;
-            font-weight: 400;
-            background: #3b82f620;
-            padding: 4px 12px;
-            border-radius: 40px;
-            color: #b9d0f0;
+        .content {
+            margin-top: 20px;
         }
 
-        .slide-body {
-            padding: 28px 32px;
-            background: #ffffff;
+        .content p {
+            margin-bottom: 15px;
         }
 
-        .code-block {
-            background: #0f172a;
+        .content ul, .content ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content li {
+            margin-bottom: 8px;
+        }
+
+        /* Code styling */
+        pre {
+            background: #1e2a3a;
             color: #e2e8f0;
-            padding: 18px 22px;
-            border-radius: 20px;
-            font-family: 'Fira Code', 'Cascadia Code', 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            overflow-x: auto;
-            white-space: pre-wrap;
-            word-break: break-word;
-            margin: 18px 0;
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 0 4px 8px rgba(0,0,0,0.1);
-            line-height: 1.45;
-        }
-
-        .code-inline {
-            background: #eef2ff;
-            color: #0f172a;
-            font-family: monospace;
-            padding: 3px 8px;
+            padding: 20px;
             border-radius: 12px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .note-box {
-            background: #fef9e3;
-            border-left: 6px solid #f59e0b;
-            padding: 14px 20px;
-            border-radius: 20px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Cascadia Code', monospace;
+            font-size: 14px;
+            line-height: 1.5;
             margin: 20px 0;
-            font-weight: 500;
-            color: #78350f;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .warning-box {
-            background: #fee2e2;
-            border-left: 6px solid #ef4444;
-            padding: 14px 20px;
-            border-radius: 20px;
+        code {
+            font-family: 'Fira Code', 'Cascadia Code', monospace;
+            background: #eef2f7;
+            padding: 2px 6px;
+            border-radius: 5px;
+            color: #c7254e;
+            font-size: 0.9em;
+        }
+
+        pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+
+        /* Highlight untuk keyword */
+        .keyword {
+            color: #c792ea;
+        }
+        .string {
+            color: #c3e88d;
+        }
+        .comment {
+            color: #546e7a;
+            font-style: italic;
+        }
+        .function {
+            color: #82aaff;
+        }
+
+        /* Note / Best Practices */
+        .note {
+            background: #e8f4fd;
+            border-left: 4px solid #3498db;
+            padding: 15px 20px;
             margin: 20px 0;
+            border-radius: 8px;
         }
 
-        ul, ol {
-            padding-left: 1.6rem;
-            margin: 1rem 0;
-        }
-
-        li {
-            margin: 8px 0;
+        .warning {
+            background: #fff3e0;
+            border-left: 4px solid #f39c12;
         }
 
         .grid-2 {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
             margin: 20px 0;
         }
 
-        .badge {
-            background: #3b82f6;
-            color: white;
-            font-size: 0.7rem;
-            border-radius: 40px;
-            padding: 2px 10px;
-            display: inline-block;
-            margin-right: 8px;
-            vertical-align: middle;
+        .card {
+            background: #f9f9fc;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #e0e7ef;
         }
 
-        hr {
-            margin: 20px 0;
-            border: 0;
-            height: 1px;
-            background: #e2e8f0;
+        footer {
+            background: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
         }
 
-        h3 {
-            font-size: 1.35rem;
-            margin: 1rem 0 0.6rem 0;
-            font-weight: 600;
-            color: #0f172a;
-        }
-
-        h4 {
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin: 1rem 0 0.4rem 0;
-            color: #1e293b;
-        }
-
-        .page-marker {
-            font-size: 0.7rem;
-            color: #64748b;
-            text-align: right;
-            margin-top: 12px;
-            border-top: 1px solid #eef2ff;
-            padding-top: 12px;
-        }
-
-        @media (max-width: 700px) {
-            .slide-body {
-                padding: 20px;
+        @media (max-width: 768px) {
+            .slide {
+                padding: 25px 20px;
             }
-            .grid-2 {
-                grid-template-columns: 1fr;
+            .slide-title {
+                font-size: 1.4rem;
+            }
+            pre {
+                font-size: 12px;
+                padding: 15px;
             }
         }
     </style>
 </head>
 <body>
-<div class="slide-container">
-
-    <!-- SESI 9: Judul utama -->
-    <div class="slide-card">
-        <div class="slide-header">
-            <h2>📘 SESI 9: Extension Methods <small>Durasi: 200 menit | Total Slide: 14</small></h2>
-        </div>
-        <div class="slide-body">
-            <p style="font-size:1.05rem"><strong>🎯 Topik:</strong> Memberdayakan tipe yang sudah ada dengan metode baru tanpa mengubah kode asli. <br>Materi ini mencakup sintaks, null safety, generic, hingga best practices.</p>
-        </div>
+<div class="container">
+    <div class="header">
+        <h1>📘 Extension Methods in Dart</h1>
+        <div class="subtitle">Sesi 9 — Menambahkan kemampuan baru tanpa mengubah kode asli</div>
+        <div class="duration">⏱️ Durasi: 200 menit | Total Slide: 14</div>
     </div>
 
     <!-- Slide 1: Review Builder Pattern -->
-    <div class="slide-card">
-        <div class="slide-header">
-            <h2>📌 Slide 1: Review Sesi 8 – Builder Pattern</h2>
-        </div>
-        <div class="slide-body">
+    <div class="slide">
+        <div class="slide-number">Slide 1</div>
+        <div class="slide-title">🔧 Review Sesi 8 – Builder Pattern</div>
+        <div class="content">
             <ul>
-                <li>✅ Builder Pattern untuk objek kompleks</li>
-                <li>✅ Method chaining menciptakan <span class="code-inline">fluent API</span></li>
-                <li>Contoh: <span class="code-inline">Pizza.builder().size('large').addTopping('cheese').build()</span></li>
+                <li>Builder Pattern untuk objek kompleks</li>
+                <li>Method chaining untuk <strong>fluent API</strong></li>
+                <li>Contoh: <code>Pizza.builder().size('large').addTopping('cheese').build()</code></li>
             </ul>
-            <div class="code-block">
-                // Contoh cepat builder
-                class ConfigBuilder {
-                  ConfigBuilder host(String h) { return this; }
-                  ConfigBuilder port(int p) { return this; }
-                  Config build() { return Config(); }
-                }
-            </div>
+            <pre><code>class ConfigBuilder {
+  ConfigBuilder host(String h) { return this; }
+  ConfigBuilder port(int p) { return this; }
+  Config build() { return Config(); }
+}</code></pre>
         </div>
     </div>
 
     <!-- Slide 2: Pengantar Extension Methods -->
-    <div class="slide-card">
-        <div class="slide-header"><h2>🧩 Slide 2: Pengantar Extension Methods</h2></div>
-        <div class="slide-body">
+    <div class="slide">
+        <div class="slide-number">Slide 2</div>
+        <div class="slide-title">✨ Pengantar Extension Methods</div>
+        <div class="content">
             <ul>
-                <li>✨ Menambahkan <strong>metode baru</strong> ke tipe yang sudah ada (String, int, List, class sendiri).</li>
-                <li>🔧 Tanpa modifikasi kode asli & tanpa inheritance.</li>
-                <li>📅 Tersedia sejak <strong>Dart 2.7</strong>.</li>
-                <li>💡 Analog: memberikan kemampuan baru tanpa mengubah benda aslinya.</li>
+                <li><strong>Apa itu?</strong> Fitur untuk menambahkan metode baru ke tipe yang sudah ada</li>
+                <li>Tanpa modifikasi kode asli</li>
+                <li>Tersedia sejak <strong>Dart 2.7</strong></li>
+                <li>Analogi: Memberikan kemampuan baru tanpa mengubah benda aslinya</li>
             </ul>
-            <div class="note-box">📌 Extension methods membuat kode lebih ekspresif dan alami.</div>
         </div>
     </div>
 
-    <!-- Slide 3: Masalah tanpa extension methods -->
-    <div class="slide-card">
-        <div class="slide-header"><h2>⚠️ Slide 3: Masalah Tanpa Extension Methods</h2></div>
-        <div class="slide-body">
-            <p>Pendekatan <span class="code-inline">utility class</span> terasa kurang alami & berantakan:</p>
-            <div class="code-block">
-// Utility class yang kurang natural
-class StringUtils {
+    <!-- Slide 3: Masalah Tanpa Extension -->
+    <div class="slide">
+        <div class="slide-number">Slide 3</div>
+        <div class="slide-title">❌ Masalah Tanpa Extension Methods</div>
+        <div class="content">
+            <p>Utility class yang kurang natural:</p>
+            <pre><code>class StringUtils {
   static String capitalize(String text) {
     if (text.isEmpty) return text;
     return text[0].toUpperCase() + text.substring(1);
   }
-  static bool isEmail(String text) => text.contains('@');
+  static bool isEmpty(String text) {
+    return text.contains('@');
+  }
 }
 
 void main() {
   var name = 'john';
-  var capitalized = StringUtils.capitalize(name); // 'John'
-  var isEmail = StringUtils.isEmail('test@mail.com');
-  print('Original: $name → Capitalized: $capitalized');
-  print('Is email? $isEmail');
-}
+  var capitalized = StringUtils.capitalize(name);
+  var isEmail = StringUtils.isEmpty('test@mail.com');
+  print('Original name: $name');
+  print('Capitalized name: $capitalized');
+  print('Is "test@mail.com" an email? $isEmail');
+}</code></pre>
+            <div class="note">
+                💡 Penggunaan <code>StringUtils.capitalize(name)</code> kurang natural dibanding <code>name.capitalize()</code>.
             </div>
-            <p>❌ Penggunaan kurang natural, kode tidak langsung "melekat" pada objek.</p>
         </div>
     </div>
 
-    <!-- Slide 4: Solusi dengan Extension Methods -->
-    <div class="slide-card">
-        <div class="slide-header"><h2>✨ Slide 4: Solusi dengan Extension Methods</h2></div>
-        <div class="slide-body">
-            <div class="code-block">
-// Extension method untuk String
-extension StringExtensions on String {
+    <!-- Slide 4: Solusi Extension Methods -->
+    <div class="slide">
+        <div class="slide-number">Slide 4</div>
+        <div class="slide-title">✅ Solusi dengan Extension Methods</div>
+        <div class="content">
+            <pre><code>extension StringExtensions on String {
   String capitalize() {
     if (isEmpty) return this;
     return this[0].toUpperCase() + substring(1);
   }
   bool get isEmail => contains('@');
-  String reverse() => split('').reversed.join();
+  String reverse() {
+    return split('').reversed.join();
+  }
 }
 
 void main() {
@@ -277,28 +291,27 @@ void main() {
   var capitalized = name.capitalize();   // 'John'
   var isEmail = 'test@mail.com'.isEmail; // true
   var reversed = 'hello'.reverse();      // 'olleh'
-  print('$name → $capitalized');
-  print('Is email? $isEmail, reversed hello: $reversed');
-}
-            </div>
-            <p>✅ Penggunaan <strong>jauh lebih natural</strong>, seperti method milik String sendiri.</p>
+  print('Original name: $name');
+  print('Capitalized name: $capitalized');
+  print('Is "test@mail.com" an email? $isEmail');
+  print('Reversed "hello": $reversed');
+}</code></pre>
+            <p>👉 Penggunaan lebih natural dan mudah dibaca!</p>
         </div>
     </div>
 
-    <!-- Slide 5 & 6 digabung: tipe apa saja + contoh numeric (built-in) -->
-    <div class="slide-card">
-        <div class="slide-header"><h2>🎯 Slide 5-6: Tipe yang Bisa Diperluas & Contoh List<int></h2></div>
-        <div class="slide-body">
-            <p><strong>Extension methods support untuk:</strong></p>
+    <!-- Slide 5 & 6 (gabungan): Tipe yang bisa diperluas + contoh list) -->
+    <div class="slide">
+        <div class="slide-number">Slide 5 &amp; 6</div>
+        <div class="slide-title">🎯 Tipe yang Bisa Diperluas</div>
+        <div class="content">
             <ul>
-                <li>1. Built-in types: <span class="code-inline">String, int, double, List, Map</span></li>
-                <li>2. Custom classes</li>
-                <li>3. Generic types: <span class="code-inline">List&lt;T&gt;, Map&lt;K,V&gt;</span></li>
-                <li>4. Nullable types: <span class="code-inline">String?, int?</span></li>
+                <li>Built-in types: <code>String, int, double, List, Map</code> dll.</li>
+                <li>Custom classes: Kelas buatan sendiri</li>
+                <li>Generic types: <code>List&lt;T&gt;, Map&lt;K, V&gt;</code></li>
+                <li>Nullable types: <code>String?, int?</code></li>
             </ul>
-            <div class="code-block">
-// Extension untuk List<int>
-extension IntListExtensions on List<int> {
+            <pre><code>extension IntListExtensions on List&lt;int&gt; {
   int get sum => fold(0, (total, item) => total + item);
   double get average => isEmpty ? 0 : sum / length;
 }
@@ -307,17 +320,16 @@ void main() {
   var numbers = [1, 2, 3, 4, 5];
   print(numbers.sum);      // 15
   print(numbers.average);  // 3.0
-}
-            </div>
+}</code></pre>
         </div>
     </div>
 
-    <!-- Slide 7: Null safety extension -->
-    <div class="slide-card">
-        <div class="slide-header"><h2>🛡️ Slide 7: Extension untuk Null Safety</h2></div>
-        <div class="slide-body">
-            <div class="code-block">
-extension NullableStringExtensions on String? {
+    <!-- Slide 7: Null Safety Extension -->
+    <div class="slide">
+        <div class="slide-number">Slide 7</div>
+        <div class="slide-title">🛡️ Extension untuk Null Safety</div>
+        <div class="content">
+            <pre><code>extension NullableStringExtensions on String? {
   String orEmpty() => this ?? '';
   bool get isNullOrEmpty => this == null || this!.isEmpty;
   bool get isNotNullOrEmpty => !isNullOrEmpty;
@@ -326,66 +338,79 @@ extension NullableStringExtensions on String? {
 
 void main() {
   String? name;
-  print(name.orEmpty());           // ''
-  print(name.isNullOrEmpty);       // true
-  print(name.withDefault('Guest')); // 'Guest'
-}
-            </div>
-            <p>🔒 Menangani nullable types secara aman dan ekspresif.</p>
+  print(name.isNullOrEmpty);           // true
+  print(name.orEmpty());               // ''
+  print(name.withDefault('Guest'));    // 'Guest'
+}</code></pre>
         </div>
     </div>
 
-    <!-- Slide 8: Praktik 1 - Utilities untuk Dart types (Number) -->
-    <div class="slide-card">
-        <div class="slide-header"><h2>💰 Slide 8: Praktik 1 - Utilities untuk Dart Types (num)</h2></div>
-        <div class="slide-body">
-            <div class="code-block">
-extension NumberExtensions on num {
+    <!-- Slide 8: Praktik 1 - Utilities untuk Dart Types -->
+    <div class="slide">
+        <div class="slide-number">Slide 8</div>
+        <div class="slide-title">💰 Praktik 1 - Utilities untuk Dart Types</div>
+        <div class="content">
+            <pre><code>extension NumberExtensions on num {
   // Format ke Rupiah
   String toRupiah() {
-    return 'Rp${toStringAsFixed(0).replaceAllMapped(
+    return 'Rp ${toStringAsFixed(0).replaceAllMapped(
       RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-      (match) => '${match[1]}.'
+      (match) => '${match[1]}.',
     )}';
   }
-  // Cek dalam range
-  bool isBetween(num min, num max) => this >= min && this <= max;
-  // Pangkat sederhana
+  
+  // Check jika dalam range
+  bool isBetween(num min, num max) {
+    return this >= min && this <= max;
+  }
+  
+  // Pangkat
   num power(int exponent) {
     var result = this;
-    for (var i = 1; i < exponent; i++) result *= this;
+    for (var i = 1; i &lt; exponent; i++) {
+      result *= this;
+    }
     return result;
   }
 }
 
 void main() {
   var price = 1500000;
-  print(price.toRupiah());     // Rp1.500.000
-  print(5.isBetween(1, 10));   // true
-  print(2.power(3));           // 8
-}
-            </div>
+  print(price.toRupiah());      // 'Rp 1.500.000'
+  print(5.isBetween(1, 10));    // true
+  print(2.power(3));            // 8
+}</code></pre>
         </div>
     </div>
 
-    <!-- Slide 9: Generic Extensions (List<T>) -->
-    <div class="slide-card">
-        <div class="slide-header"><h2>🧬 Slide 9: Generic Extensions pada List&lt;T&gt;</h2></div>
-        <div class="slide-body">
-            <div class="code-block">
-extension ListExtensions<T> on List<T> {
-  T? getOrNull(int index) => (index < 0 || index >= length) ? null : this[index];
-  List<List<T>> chunk(int size) {
-    var chunks = <List<T>>[];
-    for (var i = 0; i < length; i += size) {
+    <!-- Slide 9: Generic Extensions -->
+    <div class="slide">
+        <div class="slide-number">Slide 9</div>
+        <div class="slide-title">🧬 Generic Extensions pada List&lt;T&gt;</div>
+        <div class="content">
+            <pre><code>extension ListExtensions&lt;T&gt; on List&lt;T&gt; {
+  // Safe get dengan default
+  T? getOrNull(int index) {
+    if (index &lt; 0 || index >= length) return null;
+    return this[index];
+  }
+  
+  // Split list menjadi chunks
+  List&lt;List&lt;T&gt;&gt; chunk(int size) {
+    var chunks = &lt;List&lt;T&gt;&gt;[];
+    for (var i = 0; i &lt; length; i += size) {
       chunks.add(sublist(i, i + size > length ? length : i + size));
     }
     return chunks;
   }
-  List<T> distinct() {
-    var result = <T>[];
+  
+  // Distinct items
+  List&lt;T&gt; distinct() {
+    var result = &lt;T&gt;[];
     for (var item in this) {
-      if (!result.contains(item)) result.add(item);
+      if (!result.contains(item)) {
+        result.add(item);
+      }
     }
     return result;
   }
@@ -393,40 +418,44 @@ extension ListExtensions<T> on List<T> {
 
 void main() {
   var numbers = [1, 2, 3, 4, 5, 6, 7];
-  print(numbers.chunk(3));      // [[1, 2, 3], [4, 5, 6], [7]]
+  print(numbers.chunk(3));   // [[1, 2, 3], [4, 5, 6], [7]]
   print([1, 2, 2, 3, 3, 3].distinct()); // [1, 2, 3]
-}
-            </div>
+}</code></pre>
         </div>
     </div>
 
-    <!-- Slide 10: Extension tanpa nama (library local) -->
-    <div class="slide-card">
-        <div class="slide-header"><h2>🔒 Slide 10: Extension Tanpa Nama (library scope)</h2></div>
-        <div class="slide-body">
-            <div class="code-block">
-// File: date_utils.dart (hanya tersedia dalam library yang sama)
+    <!-- Slide 10: Extension tanpa nama (anonymous) -->
+    <div class="slide">
+        <div class="slide-number">Slide 10</div>
+        <div class="slide-title">🔒 Extension Tanpa Nama (Library Private)</div>
+        <div class="content">
+            <pre><code>// File: date_utils.dart
 extension on DateTime {
-  String get toYYYYMMDD => '$year-${month.toString().padLeft(2, '0')}-${day.toString().padLeft(2, '0')}';
-  DateTime get startOfDay => DateTime(year, month, day);
+  String get toYYYYMMDD {
+    return '${year}-${month.toString().padLeft(2, '0')}-${day.toString().padLeft(2, '0')}';
+  }
+  DateTime get startOfDay {
+    return DateTime(year, month, day);
+  }
 }
 
 void main() {
   var today = DateTime.now();
-  print(today.toYYYYMMDD);   // 2026-02-20
-  print(today.startOfDay);
-}
+  print(today.toYYYYMMDD);   // '2024-01-22'
+  print(today.startOfDay);   // 2026-02-20 00:00:00.000
+}</code></pre>
+            <div class="note warning">
+                ⚠️ Extension tanpa nama hanya bisa diakses di dalam file/library yang sama.
             </div>
-            <div class="note-box">📌 Extension <strong>tanpa nama</strong> hanya bisa diakses dalam file/library yang sama. Cocok untuk internal helper.</div>
         </div>
     </div>
 
-    <!-- Slide 11: Konflik antar extension & solusi -->
-    <div class="slide-card">
-        <div class="slide-header"><h2>⚔️ Slide 11: Konflik Antar Extension & Cara Import</h2></div>
-        <div class="slide-body">
-            <div class="code-block">
-// File: string_extensions.dart
+    <!-- Slide 11: Konflik antar extension -->
+    <div class="slide">
+        <div class="slide-number">Slide 11</div>
+        <div class="slide-title">⚠️ Konflik Nama Extension &amp; Solusi</div>
+        <div class="content">
+            <pre><code>// File: string_extensions.dart
 extension StringCaseExtensions on String {
   String capitalize() => /* ... */;
 }
@@ -436,65 +465,56 @@ extension TextUtilsExtensions on String {
   String capitalize() => /* ... berbeda ... */;
 }
 
-// SOLUSI: import dengan prefix atau show/hide
+// Solusi: Import dengan prefix atau show/hide
 import 'string_extensions.dart' as se;
 import 'text_utils.dart' hide capitalize;
 
 void main() {
   var text = 'hello';
   // text.capitalize(); // ERROR: ambiguous
-  print(se.capitalize(text)); // Gunakan prefix
-}
-            </div>
-            <p>✔️ Gunakan <span class="code-inline">as prefix</span> atau <span class="code-inline">show/hide</span> untuk menyelesaikan ambiguitas.</p>
+  se.capitalize(text);   // Gunakan dengan prefix
+}</code></pre>
+            <p>💡 Gunakan <strong>prefix</strong> atau <strong>show/hide</strong> untuk mengatasi ambiguitas.</p>
         </div>
     </div>
 
-    <!-- Slide 13 (Ringkasan + best practices) karena di file ada 14 slide dengan ringkasan pada slide 14 -->
-    <div class="slide-card">
-        <div class="slide-header"><h2>📌 Slide 13-14: Ringkasan & Best Practices</h2></div>
-        <div class="slide-body">
-            <h3>📖 Ringkasan:</h3>
-            <ul>
-                <li><strong>Extension methods</strong>: menambah method ke tipe yang ada tanpa inheritance.</li>
-                <li>Sintaks: <span class="code-inline">extension Nama on Type { ... }</span></li>
-                <li>Support method, getter, setter, operator.</li>
-                <li>Generic extensions: <span class="code-inline">extension on List&lt;T&gt;</span> sangat powerful.</li>
-            </ul>
-            <hr>
-            <h3>⭐ Best Practices:</h3>
+    <!-- Slide 13 & 14: Ringkasan dan Best Practices (skipping 12 karena kosong) -->
+    <div class="slide">
+        <div class="slide-number">Slide 13 &amp; 14</div>
+        <div class="slide-title">📌 Ringkasan &amp; Best Practices</div>
+        <div class="content">
             <div class="grid-2">
-                <div>✅ Nama jelas: <span class="code-inline">StringExtensions, DateTimeUtils</span></div>
-                <div>✅ Group by type: satu file per tipe utama</div>
-                <div>✅ Hindari overuse: jadikan semua utility sebagai extension jika masuk akal</div>
-                <div>✅ Null safety: handle nullable types dengan baik</div>
-                <div>✅ Dokumentasi: tambahkan komentar untuk public extensions</div>
+                <div class="card">
+                    <h3>🔹 Ringkasan</h3>
+                    <ul>
+                        <li>Extension methods → tambah method ke tipe yang ada</li>
+                        <li>Sintaks: <code>extension Nama on Type</code></li>
+                        <li>Support: method, getter, setter, operator</li>
+                        <li>Generic extensions: <code>on List&lt;T&gt;</code></li>
+                        <li>Dapat digunakan untuk nullable types</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>⭐ Best Practices</h3>
+                    <ul>
+                        <li><strong>Nama jelas</strong>: <code>StringExtensions</code>, <code>DateTimeUtils</code></li>
+                        <li><strong>Group by type</strong>: Satu file per tipe utama</li>
+                        <li><strong>Avoid overuse</strong>: Jangan jadikan semua utility sebagai extension</li>
+                        <li><strong>Null safety</strong>: Handle nullable types dengan baik</li>
+                        <li><strong>Dokumentasi</strong>: Tambahkan komentar untuk public extensions</li>
+                    </ul>
+                </div>
             </div>
-            <div class="note-box">🎯 Extension methods membuat kode Dart lebih readable & maintainable. Gunakan dengan bijak.</div>
+            <div class="note">
+                🎯 <strong>Inti Pembelajaran:</strong> Extension methods membuat kode lebih ekspresif, natural, dan mengikuti prinsip <em>Open-Closed</em> tanpa mengubah sumber asli.
+            </div>
         </div>
     </div>
 
-    <!-- Bonus: Menampilkan sisa slide note (slide 12 tentang konflik sudah diintegrasi) -->
-    <div class="slide-card">
-        <div class="slide-header"><h2>🧠 Praktik Lanjutan & Catatan Penting</h2></div>
-        <div class="slide-body">
-            <p>✨ Extension methods juga dapat digunakan untuk <strong>operator overloading</strong> pada tipe eksternal, serta memperkaya API library pihak ketiga.</p>
-            <p>📐 Contoh kecil: menambahkan operator <span class="code-inline">*</span> pada Duration? Atau getter <span class="code-inline">isEven</span> pada int? Semua mungkin dengan extension.</p>
-            <div class="code-block">
-// Contoh extension dengan operator
-extension IntOperator on int {
-  int operator [](int index) => this * index; // hanya demo kreatif
-  bool get isEven => this % 2 == 0;
-}
-
-void main() {
-  print(5.isEven); // false
-  print(3[4]);     // 12 (demo)
-}
-            </div>
-            <div class="page-marker">Berdasarkan materi Sesi 9 – Extension Methods (Dart) • Total 14 slide, durasi 200 menit</div>
-        </div>
-    </div>
+    <footer>
+        📚 Dart Extension Methods — Materi Sesi 9 | Builder Pattern → Extension Methods | Praktik Generic & Null Safety
+    </footer>
 </div>
 </body>
 </html>
+```
