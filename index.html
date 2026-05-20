@@ -440,16 +440,19 @@ void main() {
         </div>
         <div class="slide-body">
             <pre><code>extension NullableStringExtensions on String? {
-  String orEmpty() => this ?? '';
-  bool get isNullOrEmpty => this == null || this!.isEmpty;
-  bool get isNotNullOrEmpty => !isNullOrEmpty;
-  String withDefault(String defaultValue) => this ?? defaultValue;
+// Safe access untuk nullable string
+String orEmpty() => this ?? '';
+bool get isNullOrEmpty => this == null || this!.isEmpty;
+bool get isNotNullOrEmpty => !isNullOrEmpty;
+String withDefault(String defaultValue) => this ?? defaultValue;
 }
-void main() {
-  String? name;
-  print(name.isNullOrEmpty);           // true
-  print(name.orEmpty());               // ''
-  print(name.withDefault('Guest'));    // 'Guest'
+void main(){
+// Penggunaan
+String? name;
+print(name.orEmpty()); // ''
+print(name.isNullOrEmpty); // true
+print(name.isNotNullOrEmpty); // false
+print(name.withDefault('Guest')); // 'Guest'
 }</code></pre>
         </div>
     </div>
