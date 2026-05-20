@@ -239,21 +239,60 @@ Berikut adalah konten dari file slide yang telah diubah menjadi format HTML.
         <div class="slide-body">
             <p>Pendekatan <span class="code-inline">utility class</span> terasa kurang alami & berantakan:</p>
             <div class="code-block">
-// Utility class yang kurang natural
-class StringUtils {
-  static String capitalize(String text) {
-    if (text.isEmpty) return text;
-    return text[0].toUpperCase() + text.substring(1);
+// Contoh lengkap
+extension DateTimeExtensions on DateTime {
+  // Method
+  String toFormattedString() {
+    return '$day/$month/$year';
   }
-  static bool isEmail(String text) => text.contains('@');
+  
+  // Getter
+  bool get isToday {
+    var now = DateTime.now();
+    return year == now.year && 
+           month == now.month && 
+           day == now.day;
+  }
+  
+  // Operator
+  DateTime operator +(Duration duration) {
+    return add(duration);
+  }
 }
 
 void main() {
-  var name = 'john';
-  var capitalized = StringUtils.capitalize(name); // 'John'
-  var isEmail = StringUtils.isEmail('test@mail.com');
-  print('Original: $name → Capitalized: $capitalized');
-  print('Is email? $isEmail');
+  // 1. Implementasi toFormattedString()
+  print('--- toFormattedString() ---');
+  final now = DateTime.now();
+  print('Current date: ${now.toFormattedString()}');
+
+  final specificDate = DateTime(2023, 10, 26);
+  print('Specific date (2023-10-26): ${specificDate.toFormattedString()}');
+
+  print('\n--- isToday ---');
+  // 2. Implementasi isToday
+  final today = DateTime.now();
+  final tomorrow = DateTime.now().add(Duration(days: 1));
+  final yesterday = DateTime.now().subtract(Duration(days: 1));
+
+  print('Is ${today.toFormattedString()} today? ${today.isToday}');
+  print('Is ${tomorrow.toFormattedString()} today? ${tomorrow.isToday}');
+  print('Is ${yesterday.toFormattedString()} today? ${yesterday.isToday}');
+
+  print('\n--- operator + ---');
+  // 3. Implementasi operator +
+  final initialDate = DateTime(2024, 1, 15);
+  final durationToAdd = Duration(days: 10, hours: 3);
+  final futureDate = initialDate + durationToAdd;
+
+  print('Initial date: ${initialDate.toFormattedString()}');
+  print('Duration to add: ${durationToAdd.inDays} days, ${durationToAdd.inHours % 24} hours');
+  print('Future date: ${futureDate.toFormattedString()}');
+  print('Future date (full): $futureDate');
+
+  final anotherDuration = Duration(days: 2);
+  final evenFutureDate = futureDate + anotherDuration;
+  print('Future date + 2 day: ${evenFutureDate.toFormattedString()}');
 }
             </div>
             <p>❌ Penggunaan kurang natural, kode tidak langsung "melekat" pada objek.</p>
