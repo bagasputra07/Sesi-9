@@ -304,23 +304,17 @@ void main() {
         <div class="slide-header"><h2>✨ Slide 4: Solusi dengan Extension Methods</h2></div>
         <div class="slide-body">
             <div class="code-block">
-// Extension method untuk String
-extension StringExtensions on String {
-  String capitalize() {
-    if (isEmpty) return this;
-    return this[0].toUpperCase() + substring(1);
-  }
-  bool get isEmail => contains('@');
-  String reverse() => split('').reversed.join();
+// Extension untuk List<int>
+extension IntListExtensions on List<int> {
+  int get sum => fold(0, (total, item) => total + item);
+  
+  double get average => isEmpty ? 0 : sum / length;
 }
 
-void main() {
-  var name = 'john';
-  var capitalized = name.capitalize();   // 'John'
-  var isEmail = 'test@mail.com'.isEmail; // true
-  var reversed = 'hello'.reverse();      // 'olleh'
-  print('$name → $capitalized');
-  print('Is email? $isEmail, reversed hello: $reversed');
+void main(){
+var numbers = [1, 2, 3, 4, 5];
+print(numbers.sum);      // 15
+print(numbers.average);  // 3.0
 }
             </div>
             <p>✅ Penggunaan <strong>jauh lebih natural</strong>, seperti method milik String sendiri.</p>
