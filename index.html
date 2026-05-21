@@ -900,6 +900,49 @@ void main() {
         </div>
     </div>
 
+        <!-- SOAL 1: Konflik Nama Antar Extension -->
+    <div class="slide-card">
+        <div class="slide-header">
+            <div class="slide-num">⚠️ SOAL 1</div>
+            <div class="slide-title">Konflik Nama Antar Extension</div>
+        </div>
+        <div class="slide-body">
+            <pre><code>//Nama: Muhammad bagas putra andeza
+//NIM:251410003
+//Kelas: Si2A
+extension StringNumber on String {
+    int toInt() {
+        return int.parse(this);
+    }
+}
+
+extension StringDouble on String {
+    double toInt() {
+        return double.parse(this);
+    }
+}
+
+void main() {
+    String angka = '123';
+    
+    // Panggil secara eksplisit
+    print(StringNumber(angka).toInt());  // 123
+    print(StringDouble(angka).toInt());  // 123.0
+}</code></pre>
+            <div class="note-fire">Yang Terjadi Saat Kode Dijalankan:
+                Error kompilasi karena ambiguous name (nama method ambigu).
+
+Compiler Dart tidak bisa menentukan extension mana yang harus dipanggil karena:
+
+-Nama method sama: toInt()
+-Return type berbeda (int vs double)
+-Kedua extension sama-sama berlaku untuk tipe String 
+Penyebabnya:
+Dart tidak mengizinkan method overloading hanya berdasarkan return type. Ketika dua extension memiliki method dengan nama yang sama pada tipe yang sama, compiler tidak tahu mana yang harus dipilih.            
+            </code>.</div>
+        </div>
+    </div>
+
     <footer>
         🧯 Dart Extension Methods — Builder Pattern → Extension Methods | Null Safety, Generic, Custom Class<br>
         🔥 Tema Api & Uap: setiap slide berdiri sendiri | Sesi 9 lengkap sesuai modul asli
