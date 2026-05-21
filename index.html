@@ -322,10 +322,37 @@
                 <li>Method chaining untuk <strong>fluent API</strong></li>
                 <li>Contoh: <code>Pizza.builder().size('large').addTopping('cheese').build()</code></li>
             </ul>
-            <pre><code>class ConfigBuilder {
-ConfigBuilder host(String h) { return this; }
-ConfigBuilder port(int p) { return this; }
-Config build() { return Config(); }
+            <pre><code>//Nama: Muhammad bagas putra andeza
+//NIM:251410003
+//Kelas: Si2A
+class Config {
+  @override
+  String toString() {
+    return "Config berhasil dibuat";
+  }
+}
+
+class ConfigBuilder {
+  ConfigBuilder host(String h) {
+    return this;
+  }
+
+  ConfigBuilder port(int p) {
+    return this;
+  }
+
+  Config build() {
+    return Config();
+  }
+}
+
+void main() {
+  Config config = ConfigBuilder()
+      .host("localhost")
+      .port(8080)
+      .build();
+
+  print(config);
 }</code></pre>
         </div>
     </div>
@@ -424,18 +451,67 @@ print('Reversed "Ratma": $reversed');
     <!-- SLIDE 5: Sintaks Extension Methods (Built-in, custom, generic, nullable) -->
     <div class="slide-card">
         <div class="slide-header">
-            <div class="slide-num">📚 Slide 5 &amp; 6</div>
+            <div class="slide-num">📚 Slide 5 amp; </div>
             <div class="slide-title">Sintaks Extension Methods</div>
         </div>
         <div class="slide-body">
-            <pre><code>extension IntListExtensions on List&lt;int&gt; {
-  int get sum => fold(0, (total, item) => total + item);
-  double get average => isEmpty ? 0 : sum / length;
+            <pre><code>//Nama: Muhammad bagas putra andeza
+//NIM:251410003
+//Kelas: Si2A
+// Contoh lengkap
+extension DateTimeExtensions on DateTime {
+  // Method
+  String toFormattedString() {
+    return '$day/$month/$year';
+  }
+  
+  // Getter
+  bool get isToday {
+    var now = DateTime.now();
+    return year == now.year && 
+           month == now.month && 
+           day == now.day;
+  }
+  
+  // Operator
+  DateTime operator +(Duration duration) {
+    return add(duration);
+  }
 }
+
 void main() {
-  var numbers = [1, 2, 3, 4, 5];
-  print(numbers.sum);      // 15
-  print(numbers.average);  // 3.0
+  // 1. Implementasi toFormattedString()
+  print('--- toFormattedString() ---');
+  final now = DateTime.now();
+  print('Current date: ${now.toFormattedString()}');
+
+  final specificDate = DateTime(2023, 10, 26);
+  print('Specific date (2023-10-26): ${specificDate.toFormattedString()}');
+
+  print('\n--- isToday ---');
+  // 2. Implementasi isToday
+  final today = DateTime.now();
+  final tomorrow = DateTime.now().add(Duration(days: 1));
+  final yesterday = DateTime.now().subtract(Duration(days: 1));
+
+  print('Is ${today.toFormattedString()} today? ${today.isToday}');
+  print('Is ${tomorrow.toFormattedString()} today? ${tomorrow.isToday}');
+  print('Is ${yesterday.toFormattedString()} today? ${yesterday.isToday}');
+
+  print('\n--- operator + ---');
+  // 3. Implementasi operator +
+  final initialDate = DateTime(2024, 1, 15);
+  final durationToAdd = Duration(days: 10, hours: 3);
+  final futureDate = initialDate + durationToAdd;
+
+  print('Initial date: ${initialDate.toFormattedString()}');
+  print('Duration to add: ${durationToAdd.inDays} days, ${durationToAdd.inHours % 24} hours');
+  print('Future date: ${futureDate.toFormattedString()}');
+  print('Future date (full): $futureDate');
+
+  final anotherDuration = Duration(days: 2);
+  final evenFutureDate = futureDate + anotherDuration;
+  print('Future date + 2 day: ${evenFutureDate.toFormattedString()}');
 }</code></pre>
         </div>
     </div>
@@ -443,7 +519,7 @@ void main() {
     <!-- SLIDE 6: Tipe yang bisa Di-extend (Built-in, custom, generic, nullable) -->
     <div class="slide-card">
         <div class="slide-header">
-            <div class="slide-num"> Slide 6 &amp; 6</div>
+            <div class="slide-num"> Slide 6 amp; </div>
             <div class="slide-title">Tipe yang bisa Di-extend</div>
         </div>
         <div class="slide-body">
@@ -453,14 +529,20 @@ void main() {
                 <li>Generic types: <code>List&lt;T&gt;, Map&lt;K, V&gt;</code></li>
                 <li>Nullable types: <code>String?, int?</code></li>
             </ul>
-            <pre><code>extension IntListExtensions on List&lt;int&gt; {
+            <pre><code>//Nama: Muhammad bagas putra andeza
+//NIM:251410003
+//Kelas: Si2A
+// Extension untuk List<int>
+extension IntListExtensions on List<int> {
   int get sum => fold(0, (total, item) => total + item);
+  
   double get average => isEmpty ? 0 : sum / length;
 }
-void main() {
-  var numbers = [1, 2, 3, 4, 5];
-  print(numbers.sum);      // 15
-  print(numbers.average);  // 3.0
+
+void main(){
+var numbers = [1, 2, 3, 4, 5];
+print(numbers.sum);      // 15
+print(numbers.average);  // 3.0
 }</code></pre>
         </div>
     </div>
@@ -472,19 +554,26 @@ void main() {
             <div class="slide-title">Extension untuk Null Safety</div>
         </div>
         <div class="slide-body">
-            <pre><code>extension NullableStringExtensions on String? {
-// Safe access untuk nullable string
-String orEmpty() => this ?? '';
-bool get isNullOrEmpty => this == null || this!.isEmpty;
-bool get isNotNullOrEmpty => !isNullOrEmpty;
-String withDefault(String defaultValue) => this ?? defaultValue;
+            <pre><code>//Nama: Muhammad bagas putra andeza
+//NIM:251410003
+//Kelas: Si2A
+extension NullableStringExtensions on String? {
+  // Safe access untuk nullable string
+  String orEmpty() => this ?? '';
+  
+  bool get isNullOrEmpty => this == null || this!.isEmpty;
+  
+  bool get isNotNullOrEmpty => !isNullOrEmpty;
+  
+  String withDefault(String defaultValue) => this ?? defaultValue;
 }
+
 void main(){
 // Penggunaan
 String? name;
-print(name.orEmpty()); // ''
-print(name.isNullOrEmpty); // true
-print(name.isNotNullOrEmpty); // false
+print(name.orEmpty());           // ''
+print(name.isNullOrEmpty);       // true
+print(name.isNotNullOrEmpty);    // false
 print(name.withDefault('Guest')); // 'Guest'
 }</code></pre>
         </div>
@@ -497,29 +586,39 @@ print(name.withDefault('Guest')); // 'Guest'
             <div class="slide-title">Praktik 1 - Utilities untuk Dart Types</div>
         </div>
         <div class="slide-body">
-            <pre><code>extension NumberExtensions on num {
+            <pre><code>//Nama: Muhammad bagas putra andeza
+//NIM:251410003
+//Kelas: Si2A
+extension NumberExtensions on num {
+  // Format ke Rupiah
   String toRupiah() {
-    return 'Rp ${toStringAsFixed(0).replaceAllMapped(
+    return 'Rp${toStringAsFixed(0).replaceAllMapped(
       RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
       (match) => '${match[1]}.',
     )}';
   }
+  
+  // Check jika dalam range
   bool isBetween(num min, num max) {
     return this >= min && this <= max;
   }
+  
+  // Pangkat
   num power(int exponent) {
     var result = this;
-    for (var i = 1; i &lt; exponent; i++) {
+    for (var i = 1; i < exponent; i++) {
       result *= this;
     }
     return result;
   }
 }
-void main() {
-  var price = 1500000;
-  print(price.toRupiah());      // 'Rp 1.500.000'
-  print(5.isBetween(1, 10));    // true
-  print(2.power(3));            // 8
+
+void main(){
+// Penggunaan
+var price = 1500000;
+print(price.toRupiah());  // 'Rp1.500.000'
+print(5.isBetween(1, 10)); // true
+print(2.power(3));         // 8
 }</code></pre>
         </div>
     </div>
@@ -531,20 +630,28 @@ void main() {
             <div class="slide-title">Generic Extensions pada List&lt;T&gt;</div>
         </div>
         <div class="slide-body">
-            <pre><code>extension ListExtensions&lt;T&gt; on List&lt;T&gt; {
+            <pre><code>//Nama: Muhammad bagas putra andeza
+//NIM:251410003
+//Kelas: Si2A
+extension ListExtensions<T> on List<T> {
+  // Safe get dengan default
   T? getOrNull(int index) {
-    if (index &lt; 0 || index >= length) return null;
+    if (index < 0 || index >= length) return null;
     return this[index];
   }
-  List&lt;List&lt;T&gt;&gt; chunk(int size) {
-    var chunks = &lt;List&lt;T&gt;&gt;[];
-    for (var i = 0; i &lt; length; i += size) {
+  
+  // Split list menjadi chunks
+  List<List<T>> chunk(int size) {
+    var chunks = <List<T>>[];
+    for (var i = 0; i < length; i += size) {
       chunks.add(sublist(i, i + size > length ? length : i + size));
     }
     return chunks;
   }
-  List&lt;T&gt; distinct() {
-    var result = &lt;T&gt;[];
+  
+  // Distinct items
+  List<T> distinct() {
+    var result = <T>[];
     for (var item in this) {
       if (!result.contains(item)) {
         result.add(item);
@@ -553,10 +660,12 @@ void main() {
     return result;
   }
 }
-void main() {
-  var numbers = [1, 2, 3, 4, 5, 6, 7];
-  print(numbers.chunk(3));   // [[1, 2, 3], [4, 5, 6], [7]]
-  print([1, 2, 2, 3, 3, 3].distinct()); // [1, 2, 3]
+
+void main(){
+// Penggunaan
+var numbers = [1, 2, 3, 4, 5, 6, 7];
+print(numbers.chunk(3));  // [[1, 2, 3], [4, 5, 6], [7]]
+print([1, 2, 2, 3, 3, 3].distinct()); // [1, 2, 3]
 }</code></pre>
         </div>
     </div>
@@ -568,20 +677,27 @@ void main() {
             <div class="slide-title">Extension Tanpa Nama (Unnamed Extensions)</div>
         </div>
         <div class="slide-body">
-            <pre><code>// File: date_utils.dart
+            <pre><code>//Nama: Muhammad bagas putra andeza
+//NIM:251410003
+//Kelas: Si2A
+// File: date_utils.dart
 extension on DateTime {
   String get toYYYYMMDD {
     return '$year-${month.toString().padLeft(2, '0')}-${day.toString().padLeft(2, '0')}';
   }
+  
   DateTime get startOfDay {
     return DateTime(year, month, day);
   }
 }
+
 void main() {
+  // Hanya bisa diakses di file ini
   var today = DateTime.now();
-  print(today.toYYYYMMDD);   // '2024-01-22'
-  print(today.startOfDay);   // 2026-02-20 00:00:00.000
-}</code></pre>
+  print(today.toYYYYMMDD); // '2024-01-22'
+  print(today.startOfDay); // 2026-02-20 00:00:00.000
+}
+</code></pre>
             <div class="note-fire">⚠️ Extension tanpa nama hanya bisa diakses di dalam file/library yang sama (private).</div>
         </div>
     </div>
@@ -593,22 +709,27 @@ void main() {
             <div class="slide-title">Konflik Nama Extension &amp; Solusi</div>
         </div>
         <div class="slide-body">
-            <pre><code>// File: string_extensions.dart
+            <pre><code>//Nama: Muhammad bagas putra andeza
+//NIM:251410003
+//Kelas: Si2A
+// File: string_extensions.dart
 extension StringCaseExtensions on String {
-  String capitalize() => /* ... */;
+  String capitalize() {
+    return this[0].toUpperCase() + substring(1);
+  }
 }
-// File: text_utils.dart
+
 extension TextUtilsExtensions on String {
-  String capitalize() => /* ... berbeda ... */;
+  String capitalizeAlt() {
+    return "ALT: ${this[0].toUpperCase()}${substring(1)}";
+  }
 }
-// Solusi: Import dengan prefix atau show/hide
-import 'string_extensions.dart' as se;
-import 'text_utils.dart' hide capitalize;
 
 void main() {
   var text = 'hello';
-  // text.capitalize(); // ERROR: ambiguous
-  se.capitalize(text);   // Gunakan dengan prefix
+
+  print(text.capitalize());
+  print(text.capitalizeAlt());
 }</code></pre>
             <p>💡 Gunakan <strong>prefix</strong> atau <strong>show/hide</strong> untuk mengatasi ambiguitas.</p>
         </div>
@@ -621,16 +742,26 @@ void main() {
             <div class="slide-title">Extension untuk Custom Classes</div>
         </div>
         <div class="slide-body">
-            <pre><code>class Product {
+            <pre><code>//Nama: Muhammad bagas putra andeza
+//NIM:251410003
+//Kelas: Si2A
+class Product {
   final String name;
   final double price;
+  
   Product(this.name, this.price);
 }
 
+// Extension untuk formatting double ke Rupiah
 extension DoubleRupiahFormatter on double {
   String toRupiah() {
+    // Convert to integer to handle whole Rupiah amounts without decimals
     final intValue = toInt();
+    
+    // Convert to string
     String numberString = intValue.toString();
+    
+    // Add thousands separators
     String formattedString = '';
     int counter = 0;
     for (int i = numberString.length - 1; i >= 0; i--) {
@@ -640,25 +771,34 @@ extension DoubleRupiahFormatter on double {
         formattedString = '.' + formattedString;
       }
     }
+    
     return 'Rp$formattedString';
   }
 }
 
+// Extension untuk Product
 extension ProductExtensions on Product {
+  // Method untuk diskon
   Product withDiscount(double percentage) {
     var discountedPrice = price * (1 - percentage / 100);
     return Product(name, discountedPrice);
   }
+  
+  // Format untuk display
   String get displayInfo => '$name - ${price.toRupiah()}';
+  
+  // Check jika mahal
   bool get isExpensive => price > 1000000;
 }
 
-void main() {
-  var laptop = Product('Laptop', 15000000);
+void main(){
+  // Penggunaan
+  var laptop = Product('Hp', 15000000);
   var discounted = laptop.withDiscount(10);
-  print(discounted.displayInfo); // 'Laptop - Rp13.500.000'
-  print(laptop.isExpensive);     // true
-  var keyboard = Product('Keyboard', 750000);
+  print(discounted.displayInfo);  // 'Laptop - Rp13.500.000'
+  print(laptop.isExpensive);      // true
+
+  var keyboard = Product('Headset', 750000);
   print(keyboard.displayInfo);
   print(keyboard.isExpensive);
 }</code></pre>
@@ -673,7 +813,10 @@ void main() {
             <div class="slide-title">Extension untuk Custom Classes</div>
         </div>
         <div class="slide-body">
-            <pre><code>// Validator extensions untuk berbagai tipe
+            <pre><code>//Nama: Muhammad bagas putra andeza
+//NIM:251410003
+//Kelas: Si2A
+// Validator extensions untuk berbagai tipe
 extension StringValidators on String {
   bool get isEmail {
     return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(this);
@@ -709,20 +852,14 @@ extension IntValidators on int {
 
 void main() {
   // Penggunaan
-  var email = 'test@example.com';
-  var age = 25;
-  var password = 'Pass1234';
-  var phone = '08123456789';
-  var url = 'https://dart.dev';
+  var email = 'bagasandeza@gmail.com';
+  var age = 19;
+  var password = 'dezaqt19';
 
-  print(email.isEmail);                 // true
-  print(age.isAdultAge);                // true
-  print(password.isStrongPassword);     // true
-  print(10.isEven);                     // true
-  print(phone.isPhoneNumber);           // true
-  print(url.isUrl);                     // true
-  print(5.isOdd);                       // true
-  print((-3).isPositive);               // false
+  print(email.isEmail); // true
+  print(age.isAdultAge); // true
+  print(password.isStrongPassword); // true
+  print(10.isEven); // true
 }</code></pre>
                 </div>
             </div>
