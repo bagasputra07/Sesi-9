@@ -354,7 +354,10 @@ Config build() { return Config(); }
             <div class="slide-title">Masalah Tanpa Extension Methods</div>
         </div>
         <div class="slide-body">
-            <pre><code>// Utility class yang kurang natural
+            <pre><code>//Nama: Muhammad bagas putra andeza
+//NIM:251410003
+//Kelas: Si2A
+// Utility class yang kurang natural
 class StringUtils {
   static String capitalize(String text) {
     if (text.isEmpty) return text;
@@ -365,12 +368,12 @@ class StringUtils {
   }
 }
 void main() {
-  var name = 'john';
+  var name = 'MUHAMMAD BAGAS PUTRA  ANDEZA';
   var capitalized = StringUtils.capitalize(name);
-  var isEmail = StringUtils.isEmpty('test@mail.com');
+  var isEmail = StringUtils.isEmpty('bagasandeza@gmail.com');
   print('Original name: $name');
   print('Capitalized name: $capitalized');
-  print('Is "test@mail.com" an email? $isEmail');
+  print('Is "bagasandeza@gmail.com" an email? $isEmail');
 }</code></pre>
             <div class="note-fire">❌ Penggunaan <code>StringUtils.capitalize(name)</code> kurang natural dibanding <code>name.capitalize()</code>.</div>
         </div>
@@ -383,35 +386,65 @@ void main() {
             <div class="slide-title">Solusi dengan Extension Methods</div>
         </div>
         <div class="slide-body">
-            <pre><code>extension StringExtensions on String {
+            <pre><code>//Nama: Muhammad bagas putra andeza
+//NIM:251410003
+//Kelas: Si2A
+// Extension method untuk String
+extension StringExtensions on String {
   String capitalize() {
     if (isEmpty) return this;
     return this[0].toUpperCase() + substring(1);
   }
+  
   bool get isEmail => contains('@');
+  
   String reverse() {
     return split('').reversed.join();
   }
 }
-void main() {
-  var name = 'john';
-  var capitalized = name.capitalize();   // 'John'
-  var isEmail = 'test@mail.com'.isEmail; // true
-  var reversed = 'hello'.reverse();      // 'olleh'
-  print('Original name: $name');
-  print('Capitalized name: $capitalized');
-  print('Is "test@mail.com" an email? $isEmail');
-  print('Reversed "hello": $reversed');
+
+void main(){
+// Penggunaan lebih natural
+var name = 'Mahmud';
+var capitalized = name.capitalize();  // 'Mahmud'
+var isEmail = 'Mahmud19@gmail.com'.isEmail; // true
+var reversed = 'ratna'.reverse();     // 'antar'
+
+// Cetak variabel
+print('Original name: $name');
+print('Capitalized name: $capitalized');
+print('Is "Mahmud19@gmail.com" an email? $isEmail');
+print('Reversed "Ratma": $reversed');
+  
 }</code></pre>
             <p>✨ Penggunaan lebih natural dan readable!</p>
         </div>
     </div>
 
-    <!-- SLIDE 5: Tipe yang bisa diperluas (Built-in, custom, generic, nullable) -->
+    <!-- SLIDE 5: Sintaks Extension Methods (Built-in, custom, generic, nullable) -->
     <div class="slide-card">
         <div class="slide-header">
             <div class="slide-num">📚 Slide 5 &amp; 6</div>
-            <div class="slide-title">Tipe yang Dapat Diperluas</div>
+            <div class="slide-title">Sintaks Extension Methods</div>
+        </div>
+        <div class="slide-body">
+            <pre><code>extension IntListExtensions on List&lt;int&gt; {
+  int get sum => fold(0, (total, item) => total + item);
+  double get average => isEmpty ? 0 : sum / length;
+}
+void main() {
+  var numbers = [1, 2, 3, 4, 5];
+  print(numbers.sum);      // 15
+  print(numbers.average);  // 3.0
+}</code></pre>
+        </div>
+    </div>
+
+    <!-- SLIDE 6: Tipe yang bisa Di-extend (Built-in, custom, generic, nullable) -->
+    <div class="slide-card">
+        <div class="slide-header">
+            <div class="slide-num"> Slide 6 &amp; 6</div>
+            <div class="slide-title">Tipe yang bisa Di-extend</div>
         </div>
         <div class="slide-body">
             <ul>
