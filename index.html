@@ -943,6 +943,53 @@ Dart tidak mengizinkan method overloading hanya berdasarkan return type. Ketika 
         </div>
     </div>
 
+        <!-- SOAL 2: Extension Method Tidak Bisa Mengakses Member Private -->
+    <div class="slide-card">
+        <div class="slide-header">
+            <div class="slide-num">⚠️ SOAL 2</div>
+            <div class="slide-title">Extension Method Tidak Bisa Mengakses Member Private</div>
+        </div>
+        <div class="slide-body">
+            <pre><code>//Nama: Muhammad bagas putra andeza
+//NIM:251410003
+//Kelas: Si2A
+class Counter {
+  int _value = 0; // private
+
+  void increment() {
+    _value++;
+  }
+
+  // Getter publik untuk mengakses nilai private
+  int get value => _value;
+}
+
+extension CounterStats on Counter {
+  int getValue() {
+    // Mengakses melalui getter publik
+    return value;
+  }
+}
+
+void main() {
+  var c = Counter();
+
+  c.increment();
+
+  print(c.getValue());
+}</code></pre>
+            <div class="note-fire">Penjelasan:
+
+* Member _value bersifat private karena diawali _.
+* Extension method tidak bisa langsung mengakses member private dari luar class.
+* Solusinya adalah membuat getter publik (value) di dalam class Counter.
+* Extension kemudian mengakses getter tersebut, bukan `_value` langsung.
+                 </code>.</div>
+        </div>
+    </div>
+
+
+
     <footer>
         🧯 Dart Extension Methods — Builder Pattern → Extension Methods | Null Safety, Generic, Custom Class<br>
         🔥 Tema Api & Uap: setiap slide berdiri sendiri | Sesi 9 lengkap sesuai modul asli
