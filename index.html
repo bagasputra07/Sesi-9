@@ -1,3 +1,6 @@
+Berikut adalah kode HTML yang sudah diperbaiki dengan tampilan pop-up yang lebih proporsional (tepat di tengah, tidak memanjang):
+
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -299,7 +302,7 @@
             box-shadow: 0 6px 16px rgba(255, 80, 40, 0.4);
         }
 
-        /* Modal Pop-up */
+        /* Modal Pop-up - lebih proporsional */
         .modal {
             display: none;
             position: fixed;
@@ -314,12 +317,15 @@
 
         .modal-content {
             background: #1a0a05;
-            margin: 3% auto;
-            padding: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             border-radius: 28px;
             width: 90%;
-            max-width: 900px;
-            height: 80%;
+            max-width: 750px;
+            height: auto;
+            max-height: 85vh;
             border: 2px solid #ff6a3a;
             box-shadow: 0 0 40px rgba(255, 80, 40, 0.3);
             overflow: hidden;
@@ -329,21 +335,23 @@
 
         .modal-header {
             background: linear-gradient(95deg, #4a130b, #882c1a);
-            padding: 16px 24px;
+            padding: 14px 22px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 2px solid #e05e2e;
+            flex-shrink: 0;
         }
 
         .modal-header h3 {
             margin: 0;
             color: #ffd0b0;
+            font-size: 1.2rem;
         }
 
         .close-btn {
             color: #ffa070;
-            font-size: 32px;
+            font-size: 28px;
             font-weight: bold;
             cursor: pointer;
             transition: 0.2s;
@@ -358,6 +366,9 @@
             flex: 1;
             padding: 0;
             background: #0a0200;
+            min-height: 500px;
+            height: 60vh;
+            max-height: 60vh;
         }
 
         iframe {
@@ -392,8 +403,11 @@
             }
             .modal-content {
                 width: 95%;
-                height: 85%;
-                margin: 5% auto;
+                max-width: 95%;
+            }
+            .modal-body {
+                height: 50vh;
+                max-height: 50vh;
             }
         }
     </style>
@@ -1164,3 +1178,4 @@ void main() {
 </script>
 </body>
 </html>
+```
