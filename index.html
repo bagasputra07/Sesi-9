@@ -274,6 +274,98 @@
             border: 1px solid #e05e2e55;
         }
 
+        /* Tombol Run Code */
+        .run-btn {
+            background: linear-gradient(135deg, #e05a2a, #b13e1a);
+            border: none;
+            color: white;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: bold;
+            padding: 10px 24px;
+            margin-top: 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .run-btn:hover {
+            background: linear-gradient(135deg, #ff7a3a, #d94315);
+            transform: scale(1.02);
+            box-shadow: 0 6px 16px rgba(255, 80, 40, 0.4);
+        }
+
+        /* Modal Pop-up */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-content {
+            background: #1a0a05;
+            margin: 3% auto;
+            padding: 0;
+            border-radius: 28px;
+            width: 90%;
+            max-width: 900px;
+            height: 80%;
+            border: 2px solid #ff6a3a;
+            box-shadow: 0 0 40px rgba(255, 80, 40, 0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            background: linear-gradient(95deg, #4a130b, #882c1a);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #e05e2e;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: #ffd0b0;
+        }
+
+        .close-btn {
+            color: #ffa070;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            line-height: 1;
+        }
+
+        .close-btn:hover {
+            color: #ff5010;
+        }
+
+        .modal-body {
+            flex: 1;
+            padding: 0;
+            background: #0a0200;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         footer {
             text-align: center;
             margin-top: 40px;
@@ -298,6 +390,11 @@
             pre {
                 font-size: 12px;
             }
+            .modal-content {
+                width: 95%;
+                height: 85%;
+                margin: 5% auto;
+            }
         }
     </style>
 </head>
@@ -308,6 +405,19 @@
         <h1>🔥 SESI 9: EXTENSION METHODS</h1>
         <div class="sub">Dart 2.7+ | Menambahkan metode ke tipe existing tanpa modifikasi asli</div>
         <div class="duration-badge">⏱️ Durasi: 200 menit | Total Slide: 14</div>
+    </div>
+
+    <!-- Modal Pop-up -->
+    <div id="codeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🚀 DartPad - Run Code</h3>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <iframe id="dartpadIframe" src="about:blank"></iframe>
+            </div>
+        </div>
     </div>
 
     <!-- SLIDE 1: Review Builder Pattern -->
@@ -354,6 +464,7 @@ void main() {
 
   print(config);
 }</code></pre>
+            <button class="run-btn" onclick="runDartCode(this)">▶ Run Code</button>
         </div>
     </div>
 
@@ -403,6 +514,7 @@ void main() {
   print('Is "bagasandeza@gmail.com" an email? $isEmail');
 }</code></pre>
             <div class="note-fire">❌ Penggunaan <code>StringUtils.capitalize(name)</code> kurang natural dibanding <code>name.capitalize()</code>.</div>
+            <button class="run-btn" onclick="runDartCode(this)">▶ Run Code</button>
         </div>
     </div>
 
@@ -445,13 +557,14 @@ print('Reversed "Ratma": $reversed');
   
 }</code></pre>
             <p>✨ Penggunaan lebih natural dan readable!</p>
+            <button class="run-btn" onclick="runDartCode(this)">▶ Run Code</button>
         </div>
     </div>
 
-    <!-- SLIDE 5: Sintaks Extension Methods (Built-in, custom, generic, nullable) -->
+    <!-- SLIDE 5: Sintaks Extension Methods -->
     <div class="slide-card">
         <div class="slide-header">
-            <div class="slide-num">📚 Slide 5 amp; </div>
+            <div class="slide-num">📚 Slide 5</div>
             <div class="slide-title">Sintaks Extension Methods</div>
         </div>
         <div class="slide-body">
@@ -513,13 +626,14 @@ void main() {
   final evenFutureDate = futureDate + anotherDuration;
   print('Future date + 2 day: ${evenFutureDate.toFormattedString()}');
 }</code></pre>
+            <button class="run-btn" onclick="runDartCode(this)">▶ Run Code</button>
         </div>
     </div>
 
-    <!-- SLIDE 6: Tipe yang bisa Di-extend (Built-in, custom, generic, nullable) -->
+    <!-- SLIDE 6: Tipe yang bisa Di-extend -->
     <div class="slide-card">
         <div class="slide-header">
-            <div class="slide-num"> Slide 6 amp; </div>
+            <div class="slide-num"> Slide 6</div>
             <div class="slide-title">Tipe yang bisa Di-extend</div>
         </div>
         <div class="slide-body">
@@ -544,6 +658,7 @@ var numbers = [1, 2, 3, 4, 5];
 print(numbers.sum);      // 15
 print(numbers.average);  // 3.0
 }</code></pre>
+            <button class="run-btn" onclick="runDartCode(this)">▶ Run Code</button>
         </div>
     </div>
 
@@ -576,10 +691,11 @@ print(name.isNullOrEmpty);       // true
 print(name.isNotNullOrEmpty);    // false
 print(name.withDefault('Guest')); // 'Guest'
 }</code></pre>
+            <button class="run-btn" onclick="runDartCode(this)">▶ Run Code</button>
         </div>
     </div>
 
-    <!-- SLIDE 8: Praktik 1 - Utilities untuk Dart Types (NumberExtensions) -->
+    <!-- SLIDE 8: Praktik 1 - Utilities untuk Dart Types -->
     <div class="slide-card">
         <div class="slide-header">
             <div class="slide-num">💰 Slide 8</div>
@@ -620,6 +736,7 @@ print(price.toRupiah());  // 'Rp1.500.000'
 print(5.isBetween(1, 10)); // true
 print(2.power(3));         // 8
 }</code></pre>
+            <button class="run-btn" onclick="runDartCode(this)">▶ Run Code</button>
         </div>
     </div>
 
@@ -667,10 +784,11 @@ var numbers = [1, 2, 3, 4, 5, 6, 7];
 print(numbers.chunk(3));  // [[1, 2, 3], [4, 5, 6], [7]]
 print([1, 2, 2, 3, 3, 3].distinct()); // [1, 2, 3]
 }</code></pre>
+            <button class="run-btn" onclick="runDartCode(this)">▶ Run Code</button>
         </div>
     </div>
 
-    <!-- SLIDE 10: Unnamed Extensions (tanpa nama) -->
+    <!-- SLIDE 10: Unnamed Extensions -->
     <div class="slide-card">
         <div class="slide-header">
             <div class="slide-num">🔒 Slide 10</div>
@@ -699,6 +817,7 @@ void main() {
 }
 </code></pre>
             <div class="note-fire">⚠️ Extension tanpa nama hanya bisa diakses di dalam file/library yang sama (private).</div>
+            <button class="run-btn" onclick="runDartCode(this)">▶ Run Code</button>
         </div>
     </div>
 
@@ -732,6 +851,7 @@ void main() {
   print(text.capitalizeAlt());
 }</code></pre>
             <p>💡 Gunakan <strong>prefix</strong> atau <strong>show/hide</strong> untuk mengatasi ambiguitas.</p>
+            <button class="run-btn" onclick="runDartCode(this)">▶ Run Code</button>
         </div>
     </div>
 
@@ -803,6 +923,7 @@ void main(){
   print(keyboard.isExpensive);
 }</code></pre>
             <div class="note-fire">✨ Extension bekerja seamless dengan custom class milik sendiri.</div>
+            <button class="run-btn" onclick="runDartCode(this)">▶ Run Code</button>
         </div>
     </div>
 
@@ -861,8 +982,7 @@ void main() {
   print(password.isStrongPassword); // true
   print(10.isEven); // true
 }</code></pre>
-                </div>
-            </div>
+            <button class="run-btn" onclick="runDartCode(this)">▶ Run Code</button>
         </div>
     </div>
 
@@ -900,7 +1020,7 @@ void main() {
         </div>
     </div>
 
-        <!-- SOAL 1: Konflik Nama Antar Extension -->
+    <!-- SOAL 1: Konflik Nama Antar Extension -->
     <div class="slide-card">
         <div class="slide-header">
             <div class="slide-num">⚠️ SOAL 1</div>
@@ -939,11 +1059,12 @@ Compiler Dart tidak bisa menentukan extension mana yang harus dipanggil karena:
 -Kedua extension sama-sama berlaku untuk tipe String 
 Penyebabnya:
 Dart tidak mengizinkan method overloading hanya berdasarkan return type. Ketika dua extension memiliki method dengan nama yang sama pada tipe yang sama, compiler tidak tahu mana yang harus dipilih.            
-            </code>.</div>
+            </div>
+            <button class="run-btn" onclick="runDartCode(this)">▶ Run Code</button>
         </div>
     </div>
 
-        <!-- SOAL 2: Extension Method Tidak Bisa Mengakses Member Private -->
+    <!-- SOAL 2: Extension Method Tidak Bisa Mengakses Member Private -->
     <div class="slide-card">
         <div class="slide-header">
             <div class="slide-num">⚠️ SOAL 2</div>
@@ -984,16 +1105,62 @@ void main() {
 * Extension method tidak bisa langsung mengakses member private dari luar class.
 * Solusinya adalah membuat getter publik (value) di dalam class Counter.
 * Extension kemudian mengakses getter tersebut, bukan `_value` langsung.
-                 </code>.</div>
+                 </div>
+            <button class="run-btn" onclick="runDartCode(this)">▶ Run Code</button>
         </div>
     </div>
-
-
 
     <footer>
         🧯 Dart Extension Methods — Builder Pattern → Extension Methods | Null Safety, Generic, Custom Class<br>
         🔥 Tema Api & Uap: setiap slide berdiri sendiri | Sesi 9 lengkap sesuai modul asli
     </footer>
 </div>
+
+<script>
+    // Modal elements
+    var modal = document.getElementById('codeModal');
+    var iframe = document.getElementById('dartpadIframe');
+    var closeBtn = document.getElementsByClassName('close-btn')[0];
+
+    // Close modal when clicking X
+    closeBtn.onclick = function() {
+        modal.style.display = "none";
+        iframe.src = "about:blank";
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            iframe.src = "about:blank";
+        }
+    }
+
+    // Function to run Dart code
+    function runDartCode(button) {
+        // Get the pre element that contains the code
+        var preElement = button.previousElementSibling;
+        while (preElement && preElement.tagName !== 'PRE') {
+            preElement = preElement.previousElementSibling;
+        }
+        
+        if (preElement) {
+            // Get the code text
+            var codeText = preElement.innerText || preElement.textContent;
+            
+            // Encode for URL
+            var encodedCode = encodeURIComponent(codeText);
+            
+            // DartPad URL with the code
+            var dartpadUrl = `https://dartpad.dev/?id=&null_safety=true&code=${encodedCode}`;
+            
+            // Set iframe source and show modal
+            iframe.src = dartpadUrl;
+            modal.style.display = "block";
+        } else {
+            alert("Tidak dapat menemukan kode untuk dijalankan.");
+        }
+    }
+</script>
 </body>
 </html>
