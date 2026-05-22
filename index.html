@@ -473,9 +473,9 @@ void main() {
 
   print(config);
 }</code></pre>
-            <button class="run-btn" onclick="runDartCode(this)">▶ Run Code</button>
-        </div>
-    </div>
+            <button class="btn" onclick="openModal('78381aed23be42e4b010418f388a5a70')">
+        Lihat Kode
+            </button>
 
     <!-- SLIDE 2: Pengantar Extension Methods -->
     <div class="slide-card">
@@ -1159,5 +1159,40 @@ void main() {
         }
     }
 </script>
+        <!-- MODAL DINAMIS (Cukup Satu Saja) -->
+  <div id="dynamicModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <iframe id="modalIframe" src=""></iframe>
+    </div>
+  </div>
+
+  <script>
+    function openModal(gistId) {
+      const modal = document.getElementById("dynamicModal");
+      const iframe = document.getElementById("modalIframe");
+
+      // Load link secara otomatis saat diklik
+      iframe.src = `https://dartpad.dev/embed-dart.html?id=${gistId}&null_safety=true&run=true&theme=light`;
+      modal.style.display = "block";
+      document.body.style.overflow = "hidden"; // Biar ga bisa scroll saat modal buka
+    }
+
+    function closeModal() {
+      const modal = document.getElementById("dynamicModal");
+      const iframe = document.getElementById("modalIframe");
+
+      modal.style.display = "none";
+      iframe.src = ""; // Bersihkan iframe biar ga berat
+      document.body.style.overflow = "auto";
+    }
+
+    // Klik di luar modal untuk tutup
+    window.onclick = function (event) {
+      const modal = document.getElementById("dynamicModal");
+      if (event.target == modal) closeModal();
+    }
+  </script>
+    </div>
 </body>
 </html>
